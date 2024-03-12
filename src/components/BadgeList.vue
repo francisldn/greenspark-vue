@@ -10,7 +10,7 @@
         <div
           v-for="color in badgeColors"
           :key="color"
-          :class="['w-[16px] h-[16px] p-0 m-0 cursor-pointer', color, { '!border-2 !border-divider !border-solid': selectedColor === color, 'border-[1px] border-solid border-gray-200': color === BadgeColor.WHITE }]"
+          :class="['w-[16px] h-[16px] p-0 m-0 cursor-pointer hover:opacity-80', color, { '!border-2 !border-divider !border-solid': selectedColor === color, 'border-[1px] border-solid border-gray-200': color === BadgeColor.WHITE }]"
           role="option"
           :aria-selected="selectedColor === color"
           @click="selectColor(color)"

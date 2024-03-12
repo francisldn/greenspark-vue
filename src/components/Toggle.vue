@@ -6,7 +6,7 @@
         role="checkbox"
         :aria-checked="isActivate"
         tabindex="0"
-        class="relative z-0 w-[40px] h-[20px] flex border-[0.59px] rounded-[29.5px] shadow-[inset_0_0_5px_0_#afc6bd] border-solid border-light-green"
+        class="relative z-0 w-[40px] h-[20px] flex border-[0.59px] rounded-[29.5px] shadow-[inset_0_0_5px_0_#afc6bd] border-solid border-light-green cursor-pointer"
         :class="{ 'justify-end bg-green': isActivate, 'justify-start': !isActivate }"
         @click="toggleActivation"
         @mouseenter="setHover(true)"
