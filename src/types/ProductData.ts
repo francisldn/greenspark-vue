@@ -1,9 +1,9 @@
 export interface ProductDataType {
   id: string
-  type: string
+  type: 'carbon' | 'plastic bottles' | 'trees'
   amount: number
-  action: string
+  action: 'offsets' | 'plants' | 'collects'
   active: boolean
   linked: boolean
-  selectedColor: string
+  selectedColor: 'white' | 'black' | 'blue' | 'green' | 'beige'
 }

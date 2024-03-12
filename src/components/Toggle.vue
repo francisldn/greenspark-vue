@@ -17,7 +17,7 @@
           :class="{ 'bg-light-green opacity-50 z-10 relative': isHover, '-mr-[5px]': isActivate }"
         ></div>
         <div
-          class="absolute z-20 h-[20px] w-[20px] rounded-full border-[2px] border-solid border-yellow bg-white -top-[0.05rem]"
+          class="absolute z-20 h-[20px] w-[20px] rounded-full border-[2px] border-solid border-beige bg-white -top-[0.05rem]"
           :class="{ 'bg-white !opacity-100': isHover, '-right-[0.08rem]': isActivate, 'left-0': !isActivate }"
         ></div>
       </div>
