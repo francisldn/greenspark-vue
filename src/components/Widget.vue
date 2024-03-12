@@ -9,7 +9,7 @@
     </div>
   </template>
   
-  <script>
+  <script lang="ts">
   import WidgetHeader from './WidgetHeader.vue'
   import Checkbox from './Checkbox.vue'
   import BadgeList from './BadgeList.vue'

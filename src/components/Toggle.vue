@@ -24,7 +24,7 @@
     </div>
   </template>
   
-  <script>
+  <script lang="ts">
   import { ref } from 'vue'
   import WidgetLabel from './WidgetLabel.vue'
   
@@ -47,7 +47,7 @@
         isActivate.value = !isActivate.value
       }
   
-      const setHover = (value) => {
+      const setHover = (value: boolean) => {
         isHover.value = value
       }
   

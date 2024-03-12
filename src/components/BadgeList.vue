@@ -19,7 +19,7 @@
     </div>
   </template>
   
-  <script>
+  <script lang="ts">
   import { ref } from 'vue';
   import { BadgeColor } from '../utils/BadgeColor'
   import WidgetLabel from './WidgetLabel.vue'
@@ -40,7 +40,7 @@
   
       const badgeColors = Object.values(BadgeColor)
   
-      const selectColor = (color) => {
+      const selectColor = (color:string) => {
         selectedColor.value = color
       }
   

@@ -11,27 +11,36 @@
   </div>
 </template>
 
-<script setup>
-import subtract_dark from '../assets/subtract_dark.svg'
-import subtract from '../assets/subtract.svg'
-const props = defineProps({
-  title: {
-    type: String,
-    default: ''
-  },
-  subtitle:  {
-    type: String,
-    default: ''
-  },
-  bgColor:  {
-    type: String,
-    default: ''
-  },
-  textColor:  {
-    type: String,
-    default: ''
-  },
-})
+<script lang="ts">
+import subtract_dark from '../assets/subtract_dark.svg';
+import subtract from '../assets/subtract.svg';
 
-const imageSrc = props.textColor === 'text-green' ? subtract_dark : subtract
+export default {
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    subtitle: {
+      type: String,
+      default: ''
+    },
+    bgColor: {
+      type: String,
+      default: ''
+    },
+    textColor: {
+      type: String,
+      default: ''
+    },
+  },
+  setup(props) {
+    const imageSrc: string = props.textColor === 'text-green' ? subtract_dark : subtract;
+    
+    // You can return anything you need in your setup function
+    return {
+      imageSrc
+    };
+  }
+};
 </script>

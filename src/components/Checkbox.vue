@@ -36,7 +36,7 @@
     </div>
   </template>
   
-  <script>
+  <script lang="ts">
   import { ref } from 'vue'
   import WidgetLabel from './WidgetLabel.vue'
   
@@ -55,7 +55,7 @@
       const isHover = ref(false)
       const checkboxId = ref('public-profile')
   
-      const setHover = (value) => {
+      const setHover = (value: boolean) => {
         isHover.value = value
       }
   
