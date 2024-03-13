@@ -1,12 +1,12 @@
 <template>
-    <div class="sm:min-w-[250px] max-w-[400px] w-full flex flex-col flex-1">
+    <article class="sm:min-w-[250px] max-w-[400px] w-full flex flex-col flex-1">
       <WidgetHeader :title="title" :subtitle="subtitle" :bg-color="badgeColor" />
       <div class="flex flex-col gap-[10px] mt-[13.5px] w-full flex-1">
         <Checkbox :product-type="productType" />
         <BadgeList :product-type="productType" />
         <Toggle :product-type="productType" />
       </div>
-    </div>
+    </article>
   </template>
   
   <script lang="ts">
