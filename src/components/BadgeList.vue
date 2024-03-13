@@ -10,9 +10,9 @@
         <div
           v-for="color in badgeColors"
           :key="color"
-          :class="['w-[16px] h-[16px] p-0 m-0 cursor-pointer hover:opacity-80', color, { '!border-2 !border-divider !border-solid': selectedColor === color, 'border-[1px] border-solid border-gray-200': color === BadgeColor.WHITE }]"
+          :class="['w-[16px] h-[16px] p-0 m-0 cursor-pointer hover:opacity-80', color, { '!border-2 !border-divider !border-solid': isSelectedColor(color), 'border-[1px] border-solid border-gray-200': color === BadgeColor.WHITE }]"
           role="option"
-          :aria-selected="selectedColor === color"
+          :aria-selected="isSelectedColor(color)"
           @click="selectColor(color)"
         ></div>
       </div>
@@ -20,32 +20,57 @@
   </template>
   
   <script lang="ts">
-  import { ref } from 'vue';
+  import { computed } from 'vue';
   import { BadgeColor } from '../utils/BadgeColor'
   import WidgetLabel from './WidgetLabel.vue'
+import { useStore } from 'vuex';
+import type { BadgeColorType, ProductDataType } from '../types/ProductData';
   
   export default {
     components: {
       WidgetLabel
     },
     props: {
-      defaultColor: {
+      productType: {
         type: String,
         required: true
       }
     },
     setup(props) {
-      const selectedColor = ref(props.defaultColor)
+      const store = useStore()
+      const badgeColor = computed<BadgeColorType>(() => store.state.badgeColor)
+      const productData = computed<ProductDataType[]>(() => store.state.productData)
+      const isSelectedColor = (color: BadgeColor) => badgeColor.value[props.productType] === color
+      const setBadgeColor = (color: BadgeColorType) => {
+        store.commit('setBadgeColor', color)
+      }
+      const setProductData = (value: ProductDataType[]) => {
+        store.commit('setProductData', value)
+      }
+
       const selectId = 'select-badge-color'
   
       const badgeColors = Object.values(BadgeColor)
   
       const selectColor = (color:string) => {
-        selectedColor.value = color
+        setBadgeColor({
+          [props.productType]: color as BadgeColor
+        })
+
+        const updatedProductData = productData.value.map(product => {
+          if (product.type === props.productType) {
+            return {
+              ...product,
+              selectedColor:color.split('-')[1] as ProductDataType['selectedColor'],
+            }
+          }
+          return product
+        })
+        setProductData(updatedProductData)
       }
   
       return {
-        selectedColor,
+        isSelectedColor,
         selectId,
         badgeColors,
         selectColor,

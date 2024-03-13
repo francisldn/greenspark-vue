@@ -14,6 +14,7 @@
 <script lang="ts">
 import subtract_dark from '../assets/subtract_dark.svg';
 import subtract from '../assets/subtract.svg';
+import { headerColor } from '../utils/WidgetHeader';
 
 export default {
   props: {
@@ -28,18 +29,16 @@ export default {
     bgColor: {
       type: String,
       default: ''
-    },
-    textColor: {
-      type: String,
-      default: ''
-    },
+    }
   },
   setup(props) {
-    const imageSrc: string = props.textColor === 'text-green' ? subtract_dark : subtract;
+    const textColor = headerColor[props.bgColor as keyof typeof headerColor];
+    const imageSrc: string = textColor === 'text-green' ? subtract_dark : subtract;
     
     // You can return anything you need in your setup function
     return {
-      imageSrc
+      imageSrc,
+      textColor
     };
   }
 };

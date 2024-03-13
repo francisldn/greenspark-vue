@@ -1,10 +1,10 @@
 <template>
     <div class="sm:min-w-[250px] max-w-[400px] w-full flex flex-col flex-1">
-      <WidgetHeader :title="title" :subtitle="subtitle" :bg-color="bgColor" :text-color="textColor" />
+      <WidgetHeader :title="title" :subtitle="subtitle" :bg-color="badgeColor" />
       <div class="flex flex-col gap-[10px] mt-[13.5px] w-full flex-1">
-        <Checkbox :default-status="isLinkToProfile" />
-        <BadgeList :default-color="badgeColor" />
-        <Toggle :default-status="isActivate" />
+        <Checkbox :product-type="productType" />
+        <BadgeList :product-type="productType" />
+        <Toggle :product-type="productType" />
       </div>
     </div>
   </template>
@@ -31,23 +31,11 @@
         type: String,
         required: true
       },
-      bgColor: {
-        type: String,
-        required: true
-      },
-      isLinkToProfile: {
-        type: Boolean,
-        required: true
-      },
       badgeColor: {
         type: String,
         required: true
       },
-      isActivate: {
-        type: Boolean,
-        required: true
-      },
-      textColor: {
+      productType: {
         type: String,
         required: true
       }

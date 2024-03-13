@@ -37,30 +37,47 @@
   </template>
   
   <script lang="ts">
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
   import WidgetLabel from './WidgetLabel.vue'
+  import { useStore } from 'vuex'
+  import type { ProductDataType } from '../types/ProductData'
   
   export default {
     components: {
       WidgetLabel
     },
     props: {
-      defaultStatus: {
-        type: Boolean,
+      productType: {
+        type: String,
         required: true
       }
     },
     setup(props) {
-      const isLinkToProfile = ref(props.defaultStatus)
+      const store = useStore()
+      const productData = computed<ProductDataType[]>(() => store.state.productData)
       const isHover = ref(false)
       const checkboxId = ref('public-profile')
-  
+      const isLinkToProfile = computed<boolean>(() => store.state.productData.find((product: { type: ProductDataType ['type'] }) => product.type === props.productType)?.linked)
+      
+      const setProductData = (value: ProductDataType[]) => {
+        store.commit('setProductData', value)
+      }
+
       const setHover = (value: boolean) => {
         isHover.value = value
       }
   
       const toggleLinkToProfile = () => {
-        isLinkToProfile.value = !isLinkToProfile.value
+        const newProductData = productData.value.map(product => {
+          if(product.type === props.productType) {
+            return {
+              ...product,
+              linked: isLinkToProfile.value,
+            }
+          }
+          return product
+        })
+        setProductData(newProductData)
       }
   
       return {

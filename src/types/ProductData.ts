@@ -1,3 +1,5 @@
+import type { BadgeColor } from '@/utils/BadgeColor'
+
 export interface ProductDataType {
   id: string
   type: 'carbon' | 'plastic bottles' | 'trees'
@@ -6,4 +8,8 @@ export interface ProductDataType {
   active: boolean
   linked: boolean
   selectedColor: 'white' | 'black' | 'blue' | 'green' | 'beige'
+}
+
+export interface BadgeColorType {
+  [key: string]: BadgeColor
 }

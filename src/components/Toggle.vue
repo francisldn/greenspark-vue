@@ -25,26 +25,52 @@
   </template>
   
   <script lang="ts">
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
   import WidgetLabel from './WidgetLabel.vue'
+  import { useStore } from 'vuex'
+  import type { ProductDataType } from '../types/ProductData'
   
   export default {
     components: {
       WidgetLabel
     },
     props: {
-      defaultStatus: {
-        type: Boolean,
+      productType: {
+        type: String,
         required: true
       }
     },
     setup(props) {
-      const isActivate = ref(props.defaultStatus)
+      const store = useStore()
+      const productData = computed<ProductDataType[]>(() => store.state.productData)
+      const setProductData = (value: ProductDataType[]) => {
+        store.commit('setProductData', value)
+      }
+      const selectedProduct = computed<ProductDataType['type']>(() => store.state.selectedProduct)
+      const setSelectedProduct = (value: ProductDataType['type'] | undefined) => {
+        store.commit('setSelectedProduct', value)
+      }
+      const isActivate = computed(() => store.state.selectedProduct === props.productType)
       const isHover = ref(false)
       const toggleId = 'activate-badge'
   
       const toggleActivation = () => {
-        isActivate.value = !isActivate.value
+        if (selectedProduct.value && selectedProduct.value === props.productType) {
+            setSelectedProduct(undefined)
+          } else {
+            setSelectedProduct(props.productType as ProductDataType['type'])
+          }
+
+        const updatedProductData = productData.value.map(product => {
+              return {
+                ...product,
+                active: isActivate.value,
+              }
+          })
+          
+          setProductData(
+            updatedProductData
+          )
       }
   
       const setHover = (value: boolean) => {
