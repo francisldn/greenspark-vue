@@ -35,7 +35,7 @@ export default {
   setup(props) {
     const textColor = computed(() => headerColor[props.bgColor as keyof typeof headerColor]);
     const imageSrc = computed(() => textColor.value === 'text-green' ? subtract_dark : subtract);
-    // You can return anything you need in your setup function
+
     return {
       imageSrc,
       textColor
