@@ -72,7 +72,7 @@
           if(product.type === props.productType) {
             return {
               ...product,
-              linked: isLinkToProfile.value,
+              linked: !product.linked,
             }
           }
           return product

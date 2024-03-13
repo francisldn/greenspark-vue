@@ -39,7 +39,6 @@ export default createStore<RootState>({
       }
     },
     setProductData(state: RootState, data: ProductDataType[]) {
-      console.log('data', data)
       state.productData = data
     }
   },

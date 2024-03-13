@@ -15,6 +15,7 @@
 import subtract_dark from '../assets/subtract_dark.svg';
 import subtract from '../assets/subtract.svg';
 import { headerColor } from '../utils/WidgetHeader';
+import { computed, ref } from 'vue';
 
 export default {
   props: {
@@ -32,9 +33,8 @@ export default {
     }
   },
   setup(props) {
-    const textColor = headerColor[props.bgColor as keyof typeof headerColor];
-    const imageSrc: string = textColor === 'text-green' ? subtract_dark : subtract;
-    
+    const textColor = computed(() => headerColor[props.bgColor as keyof typeof headerColor]);
+    const imageSrc = computed(() => textColor.value === 'text-green' ? subtract_dark : subtract);
     // You can return anything you need in your setup function
     return {
       imageSrc,
