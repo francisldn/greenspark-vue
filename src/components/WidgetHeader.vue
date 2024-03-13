@@ -15,7 +15,7 @@
 import subtract_dark from '../assets/subtract_dark.svg';
 import subtract from '../assets/subtract.svg';
 import { headerColor } from '../utils/WidgetHeader';
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 
 export default {
   props: {

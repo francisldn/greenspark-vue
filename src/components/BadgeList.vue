@@ -23,8 +23,8 @@
   import { computed } from 'vue';
   import { BadgeColor } from '../utils/BadgeColor'
   import WidgetLabel from './WidgetLabel.vue'
-import { useStore } from 'vuex';
-import type { BadgeColorType, ProductDataType } from '../types/ProductData';
+  import { useStore } from 'vuex';
+  import type { BadgeColorType, ProductDataType } from '../types/ProductData';
   
   export default {
     components: {
