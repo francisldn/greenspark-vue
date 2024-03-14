@@ -52,7 +52,7 @@
       }
       const isActivate = computed(() => store.state.selectedProduct === props.productType)
       const isHover = ref(false)
-      const toggleId = 'activate-badge'
+      const toggleId = `activate-badge-${props.productType}`
   
       const toggleActivation = () => {
         if (selectedProduct.value && selectedProduct.value === props.productType) {

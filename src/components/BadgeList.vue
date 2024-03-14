@@ -2,6 +2,8 @@
     <div class="flex justify-between items-center relative text-green font-[400] text-[14px] w-full">
       <WidgetLabel :for="selectId" label="Badge colour" />
       <div
+        :id="selectId"
+        :aria-label="selectId"
         role="listbox"
         class="flex gap-[4px]"
         :aria-labelledby="selectId"
@@ -49,8 +51,7 @@
         store.commit('setProductData', value)
       }
 
-      const selectId = 'select-badge-color'
-  
+      const selectId = `select-badge-color-${props.productType}`
       const badgeColors = Object.values(BadgeColor)
   
       const selectColor = (color:string) => {
