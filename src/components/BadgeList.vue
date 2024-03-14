@@ -12,6 +12,7 @@
           :key="color"
           :class="['w-[16px] h-[16px] p-0 m-0 cursor-pointer hover:opacity-80', color, { '!border-2 !border-divider !border-solid': isSelectedColor(color), 'border-[1px] border-solid border-gray-200': color === BadgeColor.WHITE }]"
           role="option"
+          :aria-label="'select-' + color"
           :aria-selected="isSelectedColor(color)"
           @click="selectColor(color)"
         ></div>

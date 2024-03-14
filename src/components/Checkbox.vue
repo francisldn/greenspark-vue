@@ -56,7 +56,7 @@
       const store = useStore()
       const productData = computed<ProductDataType[]>(() => store.state.productData)
       const isHover = ref(false)
-      const checkboxId = ref('public-profile')
+      const checkboxId = ref('public-profile-' + props.productType)
       const isLinkToProfile = computed<boolean>(() => store.state.productData.find((product: { type: ProductDataType ['type'] }) => product.type === props.productType)?.linked)
       
       const setProductData = (value: ProductDataType[]) => {
